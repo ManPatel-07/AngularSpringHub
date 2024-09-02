@@ -1,0 +1,33 @@
+
+<div *ngIf="condition">
+    This div is displayed only if the condition is true.
+</div>
+
+  
+<ng-container *ngIf="isLoggedIn; then ifElement else elseElement">
+    <h2>Hello</h2>
+</ng-container>
+
+<ng-template #elseElement>
+    <h2>Else Condition Line</h2>
+</ng-template>
+
+<ng-template #ifElement>
+    <h2>If Condition Line With then</h2>
+</ng-template>
+
+<ng-container *ngIf="elIfCondition === 'red'">
+    <h3 style="color: red;">Red Color</h3>
+</ng-container>
+
+<ng-container *ngIf="elIfCondition === 'aqua'">
+    <h3 style="color: aqua;"> Aqua color</h3>
+</ng-container>
+
+<div [ngSwitch]="status">
+    <div *ngSwitchCase="'success'">Operation was successful!</div>
+    <div *ngSwitchCase="'error'">There was an error in the operation.</div>
+    <div *ngSwitchCase="'pending'">The operation is still pending.</div>
+    <div *ngSwitchDefault>Unknown status.</div>
+</div>
+  

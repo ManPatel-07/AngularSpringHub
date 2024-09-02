@@ -1,0 +1,6 @@
+<p>property-bind works!</p>
+
+<input type="text" name="user-name" disabled={{disable}} placeholder="interpolation">
+<br><br>
+<input type="text" name="user-name" [disabled]=disable placeholder="property-bind">
+<button (click)="toggleDisable()">{{displayDisable}}</button>

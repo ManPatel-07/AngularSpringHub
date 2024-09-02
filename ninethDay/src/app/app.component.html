@@ -1,0 +1,24 @@
+<!-- <app-login></app-login> -->
+<input type="text" #box6 name="username">
+<button (click)="getVal(box6.name)">Click</button>
+<h3>Box value is : {{displayData}}</h3>
+
+<!-- <app-count></app-count> -->
+<!-- <app-property-bind></app-property-bind> -->
+
+<h1 *ngIf="show else elsestate">hiii If Else</h1>
+<button (click)="getShowVal()">{{showButton}}</button>
+
+<ng-template #elsestate>
+   <h2>Else Line</h2>
+</ng-template>
+
+<input type="text" #box11 (focus)="eventLis(box11.value)">
+<h2 (focus)="eventLis('Hello')">Hello Dostoo !!</h2>
+<!-- <select name="xyz" #box12 id="" (change)="eventLis(box12.value)">
+  <option value="option1">Option 1</option>
+  <option value="option3">Option 3</option>
+  <option value="option2">Option 2</option>
+</select> -->
+
+<!-- <app-ifelse-condition></app-ifelse-condition> -->

@@ -1,0 +1,19 @@
+<p>login works!</p>
+<h1>Info login component from User-Auth Module </h1>
+
+
+<button (click)="getData('hii')">Click Me</button>
+<br><br>
+<input type="text" #box (keyup)="getData(box.value)" placeholder="KeyUp">
+<br><br>
+<input type="text" #box1 (keydown)="getData(box1.value)" placeholder="KeyDpwn">
+<br><br>
+<input type="text" #box2 (keypress)="getData(box2.value)" placeholder="KeyPress">
+<br><br>
+<input type="text" #box3 (blur)="getData(box3.value)" placeholder="blur">
+<br><br>
+<input type="text" #box4 (input)="getData(box4.value)" placeholder="input event">
+<br><br>
+<h2 (mouseover)="getData('mouse over')"> hiii!! </h2>
+<br>
+<h2 (mouseleave)="getData('mouse leave')">MouseLeave</h2>
