@@ -1,0 +1,12 @@
+<h2>Nested Loops Work !!!</h2>
+
+<div *ngFor="let user of userDetails">
+    <pre>{{user.name}}  {{user.email}} {{user.Contact.no1}}  {{user.Contact.no2}}</pre>
+</div>
+
+<div *ngFor="let userr of users">
+    <h2>{{userr.name}}</h2>
+    <div *ngFor="let book of userr.books">
+        {{book}}
+    </div>
+</div>

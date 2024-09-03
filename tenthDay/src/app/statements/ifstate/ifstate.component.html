@@ -1,0 +1,19 @@
+<h1>If Staement</h1>
+
+<ng-container *ngIf="contain === 'yes' else elseBlock">It's available</ng-container>
+
+<ng-template #elseBlock>It's Not available</ng-template>
+
+<h1 *ngIf="title then elseBlock2 else elseBock3"></h1>
+
+<ng-template #elseBlock2>
+    <h2>It's available with the then key word</h2>
+</ng-template>
+
+<ng-template #elseBock3>
+    <h3>It's a then block with else condition</h3>
+</ng-template>
+
+<input #currentTime type="number" (blur)="getTime(currentTime.value)">
+
+<h2>{{getMsg}}</h2>

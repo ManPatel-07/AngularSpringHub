@@ -1,0 +1,21 @@
+<h1>
+    Toggle Work !!
+</h1>
+
+<h2 *ngIf="display">hi!! how Are you ??</h2>
+<Button (click)="toggle()">Hide/Shaw</Button>
+
+<br /><br />
+
+<button (click)="toggleDetailsView()">ToggleDetail</button>
+<button (click)="toggleSettingsView()">ToggleSetting</button>
+
+<div *ngIf="toggleDetails">
+    <h3>Details View</h3>
+    <p>This is a detailed view of the work</p>
+</div>
+
+<div *ngIf="toggleSettings">
+    <h3>Settings View</h3>
+    <p>This is a settings view of the work</p>
+</div>

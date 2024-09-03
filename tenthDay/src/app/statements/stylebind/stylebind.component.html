@@ -1,0 +1,11 @@
+<h2>Style Binding !!</h2>
+<h2 [style.color]="color" [style.backgroundColor]="bgColor">hello</h2>
+
+<p [ngStyle]="{ 'color' : 'red', 'backgroundColor' : bgColor , 'font-size':fontSize}">xyz</p>
+
+<input type="text" #changeCol (keydown)="changeColor(changeCol.value)" placeholder="Enter backgroundColor">
+<br/><br>
+<input type="text" #changeSize (keydown)="changeFontSize(changeSize.value)" placeholder="Enter FontSize">
+
+
+<!-- <button (click)="changeColor()">Change Back Color</button> -->

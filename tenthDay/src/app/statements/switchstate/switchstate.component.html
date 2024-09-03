@@ -1,0 +1,40 @@
+<h2> Learn SwitchCase Statement </h2>
+
+<div [ngSwitch]="display">
+    <div *ngSwitchCase="'red'" style="color: red;">
+        <h2> Red Color Switch Satement</h2>
+    </div>
+    <div *ngSwitchCase="'blue'" style="color: blue;">
+        <h2> Blue Color Switch Satement</h2>
+    </div>
+
+    <div *ngSwitchCase="'green'" style="color: green;">
+        <h2> Green Color Switch Satement</h2>
+    </div>
+
+    <div *ngSwitchDefault >
+        <h2> Unknown Color Switch Satement</h2>
+    </div>
+</div>
+
+
+<input #weekDay type="text" (blur)="weekDayFun(weekDay.value)" placeholder="Enter The Current Day">
+<br />
+<br />
+<div [ngSwitch]="Day">
+    <div *ngSwitchCase="'Monday'">
+       <h2> "Start of a new week! Let's be productive."</h2>
+    </div>
+    <div *ngSwitchCase="'Friday'">
+        <h2>"It's almost the weekend!"</h2>
+    </div>
+    <div *ngSwitchCase="'Saturday'">
+        <h2>"Enjoy your weekend!"</h2>
+    </div>
+    <div *ngSwitchCase="'Sunday'">
+        <h2>"Rest and recharge for the week ahead."</h2>
+    </div>
+    <div *ngSwitchDefault>
+        <h2>"Keep pushing through the week!"</h2>
+    </div>
+</div>
