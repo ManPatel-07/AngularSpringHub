@@ -1,0 +1,17 @@
+<app-prod-info (prodData)="handleProdInfo($event)"></app-prod-info>
+
+<!-- <div class="allProducts-container">
+    <div *ngFor="let item of reciveData; let i = index">
+        <li class="singleProd" (click)="removeByIndex(i)">Date: {{item.date}} Name: {{item.name}} </li>
+    </div>
+</div> -->
+
+
+<div class="allProducts-container">
+    <div *ngFor="let item of reciveData; let i = index" >
+        <div (click)="removeByIndex(i)" class="singleProdTest" >
+            <div class="dateDiv" >{{item.date}}</div>
+            <div class="nameDiv">{{item.name}}</div>
+        </div>
+    </div>
+</div>

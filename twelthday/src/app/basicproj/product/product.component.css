@@ -1,0 +1,52 @@
+.singleProd{
+    height: 20px;
+    width: 300px;
+    background-color: aqua;
+    margin: 10px;
+    border-radius: 10px;
+    list-style-type: none;
+    padding-left: 15px;
+    align-items: center;
+    cursor: pointer;    
+}
+
+.allProducts-container{
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.singleProdTest{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: aqua;
+}
+.dateDiv{
+    /* background-color: black;
+    color: white;
+    height: 60px;
+    width: 60px; */
+    margin-left: 10px;
+}
+
+.nameDiv{
+    margin-right: 10px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    height: 30px;
+    width: 50px;
+    border-radius: 10px;
+}

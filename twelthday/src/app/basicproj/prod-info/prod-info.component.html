@@ -1,0 +1,9 @@
+<div class="addProdThings">
+    <input type="text" name="date" id="" placeholder="12 march 2000" #prodDate >
+    <br><br>
+    <input type="text" placeholder="Add Product Name" #prodName >
+    <br><br>
+    <button (click)="addInfo(prodDate.value, prodName.value)">Add Other Product</button>
+    <br><br>
+    <button (click)="sendArray()">Add Products</button>
+</div>

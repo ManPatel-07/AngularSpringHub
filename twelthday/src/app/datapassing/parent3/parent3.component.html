@@ -1,0 +1,13 @@
+<p>parent3 works!</p>
+<!-- <app-child3 (arrayEmitter)="handleArray($event)"></app-child3> -->
+
+<div>
+    <h2>Parent Component</h2>
+    <app-child3 (arrayEmitter)="handleArray($event)"></app-child3> <!-- Listen to the event -->
+    <h3>Received Array of Objects:</h3>
+    <ul>
+      <li *ngFor="let person of receivedArray">
+        Name: {{ person.name }}, Age: {{ person.age }}
+      </li>
+    </ul>
+</div>

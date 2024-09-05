@@ -1,0 +1,12 @@
+<app-users-info (userDataEmitter)="userDataFun($event)"></app-users-info>
+
+<div class="allUsers">
+    <div *ngFor="let item of recivedUsers" class="singleUser">
+        <div class="dateDiv">
+            <div class="dateUser">{{item.date}}</div>
+            <div class="dateUser">{{item.month}}</div>
+            <div class="dateUser">{{item.year}}</div>
+        </div>
+        <div>{{item.name}}</div>
+    </div>
+</div>

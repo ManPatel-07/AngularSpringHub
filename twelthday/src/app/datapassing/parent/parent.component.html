@@ -1,0 +1,16 @@
+<h2>parent works!</h2>
+<app-child  [item]="data" [other]="anotherData" [dataobj]="childObj" ></app-child>
+
+<div *ngFor="let user of userInfo">
+    <app-child [userDetails]="user" ></app-child>
+</div>
+
+<button (click)="changeValue()">Change Value</button>
+
+<div>
+    <h2>Parent Component</h2>
+    <app-child (objectEmitter)="handleObject($event)"></app-child> <!-- Listen to the event -->
+    <p>Received Object:</p>
+    <p>Name: {{ receivedObject.name }}</p>
+    <p>Age: {{ receivedObject.age }}</p>
+  </div>

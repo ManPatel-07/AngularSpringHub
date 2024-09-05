@@ -1,0 +1,9 @@
+<h2>Child To Parent Data ...</h2>
+<app-child2 (item)="userInfo($event)" (item2)="secondInfo($event)" ></app-child2>
+<h2>{{displayInfo}}</h2>
+
+<div *ngFor="let data of displayInfo">
+    <h3>{{data}}</h3>
+</div>
+
+<!-- <app-child2></app-child2> -->

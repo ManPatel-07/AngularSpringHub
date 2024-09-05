@@ -1,0 +1,32 @@
+.allUsers{
+    background-color: yellow;
+    width: 300px;
+    margin: 15px;
+    padding: 5px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.singleUser{
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    border-radius: 12px;
+}
+
+.dateDiv{
+    
+    background-color: black;
+    color: white;
+    width: 50px;
+    border-radius: 15px;
+    margin: 8px;
+    margin-left: 15px;
+}
+
+.dateUser{
+    display: flex;
+    justify-content: center;
+}
