@@ -1,0 +1,36 @@
+<form #userForm="ngForm" (ngSubmit)="userData(userForm.value)">
+    <label for="userName">UserName :- </label>
+    <input type="text" name="name" id="name" ngModel>
+    <br><br>
+
+    <label for="password"> Password:- </label>
+    <input type="password" name="password" id="password" ngModel>
+    <br><br>
+
+    <label for="email">Email :- </label>
+    <input type="email" name="email" id="email" ngModel>
+    <br><br>
+
+    <label for="street">Address Street :- </label>
+    <input type="text" name="street" id="street" ngModel>
+    <br><br>
+
+    <label for="city">City</label>
+    <select name="city" id="city" ngModel>
+        <option value="gandhingar">Gandhinagar</option>
+        <option value="ahemdabad">Ahemdabad</option>
+        <option value="surat">Surat</option>
+        <option value="rajkot">Rajkot</option>
+    </select>
+    <br><br>
+
+    <label for="pinCode">Pin Code :- </label>
+    <input type="text" name="pinNo" placeholder="Enter PinCode " ngModel>
+    <br><br>
+
+    <button>Submit</button>
+
+</form>
+
+<button (click)="shawAllUsersData()">Shaw All Data </button>
+<!-- <button (click)="userData(userForm.value)">submit form outside</button> -->

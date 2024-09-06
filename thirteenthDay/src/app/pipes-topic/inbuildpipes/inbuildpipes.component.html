@@ -1,0 +1,22 @@
+<h2>{{title | uppercase}}</h2>
+<h2>{{title | lowercase}}</h2>
+<h2>{{title | slice : 2 : 9}}</h2>
+<h2>{{200 | currency: 'INR'}}</h2>
+
+<h2>{{data | json | uppercase}}</h2>
+<h2>{{usersDetails | json}}</h2>
+
+<h2>{{ today | date }}</h2>
+<h2>Date Formate fullDate :- {{today | date : 'fullDate'  }}</h2>
+<h2>Date Formate short :- {{today | date:'short'}}</h2>
+<h2>Date Formate :- {{today | date:'medium'}}</h2>
+
+<h2>{{2000.30044 | number:'4.2-3'}}</h2>
+
+<h2>{{0.25256 | percent:'1.1-2'}}</h2>
+
+<!-- <h2>{{title | }}</h2> -->
+<h2>{{20 | usdInr}}</h2>
+<h2>{{20 | usdInr : 30}}</h2>
+
+<p>{{ asyncData$ | async }}</p>
