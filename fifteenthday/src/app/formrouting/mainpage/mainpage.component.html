@@ -1,0 +1,11 @@
+<!-- <p>mainpage works!</p> -->
+<body *ngIf="mainVisible">
+    <div class="button-container">
+        <button class="btn primary-btn" routerLink="login" (click)="hideMain()">Login</button>
+        <button class="btn secondary-btn" (click)="hideMain()">SignUp</button>
+    </div>
+</body>
+
+<!-- <a routerLink="signup">xasdf</a> -->
+
+<router-outlet></router-outlet>

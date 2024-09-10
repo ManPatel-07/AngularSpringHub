@@ -1,0 +1,29 @@
+<p>signup works!</p>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form [formGroup]="signup" (click)="signUpUser()">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" formControlName="username" >
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" formControlName="email" >
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" formControlName="password" >
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" formControlName="confirmPassword" >
+            </div>
+            <div class="input-group">
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+<router-outlet></router-outlet>

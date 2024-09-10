@@ -1,0 +1,8 @@
+.linkEffect{
+    color: red;
+}
+
+.linkEffect:hover{
+    color: blue;
+    cursor: pointer;
+}
