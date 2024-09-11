@@ -1,0 +1,25 @@
+<h2>header</h2>
+<ul *ngFor="let user of userss">
+  <li>{{user.name}}</li>
+</ul>
+
+<table style="border: 1px solid black;">
+
+  <tr style="border: 1px solid black;">
+    <td style="border: 1px solid black;">Name</td>
+    <td style="border: 1px solid black;">RollNo</td>
+    <td style="border: 1px solid black;">Maths</td>
+    <td style="border: 1px solid black;">Science</td>
+  </tr>
+
+  <tr *ngFor="let studentData of students">
+    <td style="border: 1px solid black;">{{studentData.name}}</td>
+    <td style="border: 1px solid black;">{{studentData.rollno}}</td>
+    <td style="border: 1px solid black;">{{studentData.maths}}</td>
+    <td style="border: 1px solid black;">{{studentData.science}}</td>
+  </tr>
+
+</table>
+
+<app-marksheetform></app-marksheetform>
+<!-- <app-footer></app-footer> -->

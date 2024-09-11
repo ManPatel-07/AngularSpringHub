@@ -1,0 +1,14 @@
+
+<form #marksheetForm="ngForm" (ngSubmit)="saveMarksheetData(marksheetForm.value)">
+    <input type="text" placeholder="Enter Name " name="name" ngModel>
+    <br><br>
+    <input type="text" placeholder="Enter RollNo" name="rollno" ngModel>
+    <br><br>
+    <input type="text" placeholder="Enter Maths Marks :-" name="maths" ngModel>
+    <br><br>
+    <input type="text" placeholder="Enter Science Marks :- " name="science" ngModel>
+    <br><br>
+    <input type="text" placeholder="Enter English Marks :- " name="english" ngModel>
+    <br><br>
+    <button>Submit Data</button>
+</form>

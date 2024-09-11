@@ -3,6 +3,9 @@ package com.seven.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -11,9 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.PatchExchange;
 
 import com.seven.dto.MarksheetDto;
 import com.seven.service.MarksheetService;
@@ -22,15 +23,23 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/")
 public class MarksheetController 
 {
 	private final MarksheetService marksheetService;
 	
+//	@PostMapping(value = "/marksheet/save")
+//	public MarksheetDto save(@RequestBody MarksheetDto marksheetDto)
+//	{
+//		return marksheetService.save(marksheetDto);
+//	}
+	
 	@PostMapping(value = "/marksheet/save")
-	public MarksheetDto save(@RequestBody MarksheetDto marksheetDto)
+	public ResponseEntity<MarksheetDto> save(@RequestBody MarksheetDto marksheetDto)
 	{
-		return marksheetService.save(marksheetDto);
+		
+		return new ResponseEntity<MarksheetDto>(marksheetService.save(marksheetDto), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/marksheet/{rolln}")
@@ -40,10 +49,16 @@ public class MarksheetController
 		return marksheetService.findByRoll(rollno);
 	}
 	
+//	@GetMapping(value = "/marksheet/all")
+//	public List<MarksheetDto> findAll()
+//	{
+//		return marksheetService.findAll();
+//	}
+	
 	@GetMapping(value = "/marksheet/all")
-	public List<MarksheetDto> findAll()
+	public ResponseEntity<List<MarksheetDto>> findAll()
 	{
-		return marksheetService.findAll();
+		return new ResponseEntity<List<MarksheetDto>>(marksheetService.findAll(), HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/marksheet/{id}")
