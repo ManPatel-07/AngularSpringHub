@@ -1,0 +1,22 @@
+<table style="border: 1px solid black">
+    <tr>
+        <td class="bor-style">Name</td>
+        <td class="bor-style">Rollno</td>
+        <td class="bor-style">Terms</td>
+        <td class="bor-style">Date</td>
+        <td class="bor-style">Time</td>
+        <td class="bor-style">Date-Time</td>
+        <td class="bor-style">Delete</td>
+    </tr>
+
+    <tr *ngFor="let data of user" style="border: 1px solid black">
+        <td class="bor-style">{{data.name}}</td>
+        <td class="bor-style">{{data.rollno}}</td>
+        <td class="bor-style">{{data.terms}}</td>
+        <td class="bor-style">{{data.dateData}}</td>
+        <td class="bor-style">{{data.timeData}}</td>
+        <td class="bor-style">{{data.dateTimeData}}</td>
+        <button class="bor-style" (click)="navigateToContent(data.id)">Remove</button>
+    </tr>
+    
+</table>

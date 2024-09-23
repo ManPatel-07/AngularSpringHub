@@ -1,0 +1,30 @@
+<form #formData="ngForm" (ngSubmit)="saveData(formData.value)">
+
+  <label for="textData">Text:</label>
+  <input type="text" id="name" name="name" placeholder="Enter some Name" required ngModel>
+  <br><br>
+
+  <label for="numberData">Number:</label>
+  <input type="number" id="rollno" name="rollno" placeholder="Enter a Rollno" required ngModel>
+  <br><br>
+
+  <label for="checkboxData">Checkbox:</label>
+  <input type="checkbox" id="terms" name="terms" value="true" ngModel>
+  <br><br>
+
+  <label for="dateData">Date:</label>
+  <input type="date" id="dateData" name="dateData" required ngModel>
+  <br><br>
+
+  <label for="timeData">Time:</label>
+  <input type="time" id="timeData" name="timeData" required ngModel>
+  <br><br>
+
+  <label for="dateTimeData">Date and Time:</label>
+  <input type="datetime-local" id="dateTimeData" name="dateTimeData" required ngModel>
+  <br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<app-data-table></app-data-table>

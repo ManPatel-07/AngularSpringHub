@@ -27,4 +27,14 @@ public class FormService
 //		.map(data -> data)
 		.collect(Collectors.toList());
 	}
+	
+	public FormEntity updateById(Long id, FormEntity formEntity)
+	{
+		formEntity.setId(id);
+		return formRepo.save(formEntity);
+	}
+
+	public void deleteById(Long id) {
+		formRepo.deleteById(id);
+	}
 }
