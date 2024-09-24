@@ -1,6 +1,7 @@
 package org.mm.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.mm.entities.FormEntity;
@@ -36,5 +37,11 @@ public class FormService
 
 	public void deleteById(Long id) {
 		formRepo.deleteById(id);
+	}
+	
+	public FormEntity getUserfindById(Long id)
+	{
+		Optional<FormEntity> formEntity = formRepo.findById(id);
+		return formEntity.orElse(null);
 	}
 }

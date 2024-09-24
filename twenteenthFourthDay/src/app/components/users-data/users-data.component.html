@@ -1,0 +1,24 @@
+
+<table>
+    <tr class="head-row">
+        <td>Name</td>
+        <td>RollNo</td>
+        <td>Terms</td>
+        <td>dateData</td>
+        <td>timeData</td>
+        <td>dateTimeData</td>
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+
+    <tr *ngFor="let user of users" class="main-content">
+        <td>{{user.name}}</td>
+        <td>{{user.rollno}}</td>
+        <td>{{user.terms}}</td>
+        <td>{{user.dateData}}</td>
+        <td>{{user.timeData}}</td>
+        <td>{{user.dateTimeData}}</td>
+        <td><Button (click)="navigateDeleteUser(user.id)">Remove</Button></td>
+        <td><button (click)="updateUser(user.id)">Update</button></td>
+    </tr>
+</table>

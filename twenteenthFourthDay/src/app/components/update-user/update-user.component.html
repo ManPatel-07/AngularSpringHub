@@ -1,0 +1,31 @@
+<p>update-user works!</p>
+
+<form #formData="ngForm" (ngSubmit)="onSubmit()">
+
+    <label for="textData">Text:</label>
+    <input type="text" id="name" name="name" placeholder="Enter some Name" required [(ngModel)]="user.name">
+    <br><br>
+  
+    <label for="numberData">Number:</label>
+    <input type="number" id="rollno" name="rollno" placeholder="Enter a Rollno" required [(ngModel)]="user.rollno">
+    <br><br>
+  
+    <label for="checkboxData">Checkbox:</label>
+    <input type="checkbox" id="terms" name="terms" value="true" [(ngModel)]="user.terms">
+    <br><br>
+  
+    <label for="dateData">Date:</label>
+    <input type="date" id="dateData" name="dateData" required [(ngModel)]="user.dateData">
+    <br><br>
+  
+    <label for="timeData">Time:</label>
+    <input type="time" id="timeData" name="timeData" required [(ngModel)]="user.timeData">
+    <br><br>
+  
+    <label for="dateTimeData">Date and Time:</label>
+    <input type="datetime-local" id="dateTimeData" name="dateTimeData" required [(ngModel)]="user.dateTimeData">
+    <br><br>
+  
+    <input type="submit" value="Submit">
+
+</form>    

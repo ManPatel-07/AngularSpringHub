@@ -56,4 +56,10 @@ public class FormController
 		formService.deleteById(id);
 	}
 	
+	@GetMapping(path = "/find/{id}")
+	public ResponseEntity<FormEntity> userfindById(@PathVariable("id") Long id)
+	{
+		FormEntity formEntity = formService.getUserfindById(id);
+		return new ResponseEntity<FormEntity>(formEntity, HttpStatus.OK);
+	}
 }

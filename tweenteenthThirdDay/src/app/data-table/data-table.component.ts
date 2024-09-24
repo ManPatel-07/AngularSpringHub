@@ -21,7 +21,8 @@ export class DataTableComponent {
 
   navigateToContent(id: number)
   {
-    this.router.navigate(['/delete', id]);
+    // this.router.navigate(['/delete', id]);
+    this.userData.deleteUser(id).subscribe(()=>{console.log("deleted ...")});
   }
   
 }
