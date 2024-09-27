@@ -45,4 +45,25 @@ public class DepartmentService
 					return departmentRepo.save(department);
 				})).orElse(null);
 	}
+
+	public DepartmentEntity assignDepartToManager(Long id) {
+		Optional<EmployeeEntity> employeeEntity = employeeRepo.findById(id);
+		return departmentRepo.findByManager(employeeEntity);
+	}
+	
+	public DepartmentEntity assignWorkerToDepartment(Long departId, Long empId)
+	{
+		Optional<DepartmentEntity> departmentEntity = departmentRepo.findById(departId);
+		Optional<EmployeeEntity> employeeEntity = employeeRepo.findById(empId);
+		
+		return departmentEntity.flatMap(department ->
+				employeeEntity.map(employee -> {
+					employee.setWorkerDepartment(department);
+					employeeRepo.save(employee);
+					
+					department.getWorkers().add(employee);
+					return department;
+				})).orElse(null);
+	}
+
 }

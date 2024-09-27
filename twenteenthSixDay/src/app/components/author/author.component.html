@@ -1,0 +1,4 @@
+<form #authorForm="ngForm" (ngSubmit)="postAuthor(authorForm.value)">
+    <input type="text" placeholder="Enter Author Name :" name="authorName" ngModel>
+    <button>Enter Author</button>
+</form>

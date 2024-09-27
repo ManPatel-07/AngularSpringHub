@@ -25,7 +25,7 @@ public class EmployeeController
 		return employeeService.saveEmployee(employeeEntity);
 	}
 	
-	@GetMapping(path = "/findAllDepart")
+	@GetMapping(path = "/findAll")
 	public List<EmployeeEntity> findAllDepart()
 	{
 		return employeeService.findAllEmployee();

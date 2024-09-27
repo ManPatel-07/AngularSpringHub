@@ -1,0 +1,4 @@
+<form #bookForm="ngForm" (ngSubmit)="postBook(bookForm.value)">
+    <input type="text" placeholder="Enter Book Name :" name="bookTitle" ngModel>
+    <button>Enter Book</button>
+</form>
