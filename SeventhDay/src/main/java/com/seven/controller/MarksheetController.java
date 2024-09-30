@@ -49,6 +49,12 @@ public class MarksheetController
 		return marksheetService.findByRoll(rollno);
 	}
 	
+	@GetMapping(value = "/marksheetById/{id}")
+	public MarksheetDto marksheetFindById(@PathVariable("id") Long id)
+	{
+		return marksheetService.marksheetFindById(id);
+	}
+	
 //	@GetMapping(value = "/marksheet/all")
 //	public List<MarksheetDto> findAll()
 //	{

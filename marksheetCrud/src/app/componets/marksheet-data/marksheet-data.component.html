@@ -1,0 +1,27 @@
+
+<table>
+    <tr class="head-row">
+        <td>Name</td>
+        <td>RollNo</td>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>English</td>
+        <!-- <td>dateTimeData</td> -->
+        <td>Delete</td>
+        <td>Edit</td>
+    </tr>
+
+    <tr *ngFor="let user of marksheetData" class="main-content">
+        <td>{{user.name}}</td>
+        <td>{{user.rollno}}</td>
+        <td>{{user.maths}}</td>
+        <td>{{user.science}}</td>
+        <td>{{user.english}}</td>
+        <!-- <td>{{user.dateTimeData}}</td>
+        <td><Button (click)="navigateDeleteUser(user.id)">Remove</Button></td>
+        <td><button (click)="updateUser(user.id)">Update</button></td> -->
+        <td><button [routerLink]="['/update', user.rollno]">Update</button></td>
+    </tr>
+</table>
+
+<router-outlet></router-outlet>

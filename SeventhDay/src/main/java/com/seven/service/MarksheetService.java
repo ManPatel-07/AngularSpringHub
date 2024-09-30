@@ -68,6 +68,13 @@ public class MarksheetService
 		});
 		return convertToDto(marksheetRepo.save(marksheetEntity));
 	}
+
+	public MarksheetDto marksheetFindById(Long id)
+	{
+		MarksheetEntity marksheetEntity = marksheetRepo.findById(id).orElse(null);
+		MarksheetDto marksheetDto = convertToDto(marksheetEntity);
+		return marksheetDto;
+	}
 	
 	public MarksheetDto convertToDto(MarksheetEntity marksheetEntity)
 	{
@@ -78,7 +85,5 @@ public class MarksheetService
 	{
 		return modelMapper.map(marksheetDto, MarksheetEntity.class);
 	}
-
-
 
 }
