@@ -36,6 +36,5 @@ public class AuthorEntity
 	private String bio;
 	
 	@OneToMany(mappedBy = "author")
-	@JsonIgnore
 	private List<BookEntity> books;
 }

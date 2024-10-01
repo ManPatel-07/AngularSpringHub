@@ -1,5 +1,7 @@
 package com.seven.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,4 +24,8 @@ public class MarksheetDto
 	private Integer science;
 	
 	private Integer english;
+
+	private LocalDateTime createdDate;
+
+	private LocalDateTime updatedDate;
 }

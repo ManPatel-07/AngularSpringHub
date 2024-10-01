@@ -17,7 +17,7 @@ import jakarta.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "marksheet")
-public class MarksheetEntity 
+public class MarksheetEntity extends AuditableEntity
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
