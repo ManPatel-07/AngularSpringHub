@@ -6,6 +6,8 @@
           <th>Author Name</th>
           <th>Author Bio</th>
           <th>Books</th>
+          <th>Update</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -14,8 +16,14 @@
           <td>{{ author.bio }}</td>
           <td>
             <ul>
-              <li *ngFor="let book of author.books">{{ book.title }} (ISBN: {{ book.isbn }})</li>
+              <li *ngFor="let book of author.books">{{ book.title }} <button (click)="deleteBook(book.id)">Delete</button></li>
             </ul>
+          </td>
+          <td>
+            <button (click)="editAuthor(author.id)">Edit</button>
+          </td>
+          <td>
+            <button (click)="deleteAuthor(author.id)">Delete</button>
           </td>
         </tr>
       </tbody>

@@ -5,12 +5,7 @@
         <label for="title">Book Title:</label>
         <input type="text" id="title" [(ngModel)]="book.title" name="title" required />
       </div>
-  
-      <div style="margin-top: 15px;">
-        <label for="isbn">Book ISBN:</label>
-        <input type="text" id="isbn" [(ngModel)]="book.isbn" name="isbn" required />
-      </div>
-  
+
       <div style="margin-top: 15px;">
         <label for="author">Select Author:</label>
         <select id="author" [(ngModel)]="book.author_id" name="authorId" required>
@@ -18,7 +13,6 @@
         </select>
       </div>
 
-  
       <div style="margin-top: 15px;">
         <button type="submit">Submit</button>
       </div>

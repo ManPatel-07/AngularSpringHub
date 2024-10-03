@@ -32,4 +32,19 @@ public class BookService
 	{
 		return bookRepo.findAll();
 	}
+	
+	public String bookDelete(Long id)
+	{
+		bookRepo.deleteById(id);
+		return "Book Deleted ...";
+	}
+	
+	public BookEntity updateBookById(BookEntity bookEntity, Long bookId, Long authorId)
+	{
+		AuthorEntity authorEntity = authorRepo.findById(authorId).orElseThrow();
+		bookEntity.setId(bookId);
+		bookEntity.setAuthor(authorEntity);
+		return bookRepo.save(bookEntity);
+	}
+	
 }

@@ -2,7 +2,10 @@ package org.mm.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -26,6 +29,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "author")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class,
+//        property = "id")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AuthorEntity 
 {
 	@Id
@@ -36,8 +43,8 @@ public class AuthorEntity
 	private String authorName;
 	
 //	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+//  @JsonManagedReference
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference
 	private List<BookEntity> books;
 	
 //	@OneToOne(cascade = CascadeType.ALL)

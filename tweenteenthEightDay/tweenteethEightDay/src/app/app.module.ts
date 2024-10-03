@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { AuthorComponent } from './components/author/author.component';
 import { BookComponent } from './components/book/book.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
+import { UpdateDataComponent } from './components/update-data/update-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthorComponent,
     BookComponent,
-    AuthorListComponent
+    AuthorListComponent,
+    UpdateDataComponent
   ],
   imports: [
     BrowserModule,

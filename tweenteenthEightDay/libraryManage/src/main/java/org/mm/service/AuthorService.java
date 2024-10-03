@@ -8,6 +8,7 @@ import org.mm.entities.BookEntity;
 import org.mm.repository.AuthorRepo;
 import org.mm.repository.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +28,24 @@ public class AuthorService
 	public List<AuthorEntity> findAllAuthor()
 	{
 		return authorRepo.findAll();
+	}
+	
+	public String deleteAuthor(Long id)
+	{
+		authorRepo.deleteById(id);
+		return "Author Deleted ...";
+	}
+	
+	public AuthorEntity getAuthorById(Long id)
+	{
+		AuthorEntity authorEntity = authorRepo.findById(id).orElseThrow();
+		return authorEntity;
+	}
+	
+	public AuthorEntity updateAuthorById(AuthorEntity authorEntity, Long id)
+	{
+		authorEntity.setId(id);
+		return authorRepo.save(authorEntity);
 	}
 
 	public BookEntity setBootToAuthor(Long authorId, Long bookId) {

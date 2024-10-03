@@ -36,7 +36,7 @@ export class BookComponent {
 
     this.bookService.createBook(this.book, this.authorrId).subscribe(data => {
       console.log('Book created successfully');
-      this.router.navigate(['/add-book']);
+      this.router.navigate(['/authors']);
 
     });
   }
