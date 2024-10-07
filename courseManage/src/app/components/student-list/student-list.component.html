@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Student Course List</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Email</th>
+          <th>Course Name</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentsData">
+          <td>{{ student.studentName }}</td>
+          <td>{{ student.email }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let course of student.courses">
+                {{ course.courseName }}
+              </li>
+            </ul>
+            <div *ngIf="student.courses.length === 0">
+              No courses enrolled
+            </div>
+          </td>
+          <td>
+            <button (click)="deleteStudentById(student.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

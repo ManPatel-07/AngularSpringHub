@@ -1,0 +1,22 @@
+.header-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: 20px;
+  }
+  
+  .header-links h2 {
+    margin: 0 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  .header-links h2:hover {
+    color: #0056b3;
+  }
+  

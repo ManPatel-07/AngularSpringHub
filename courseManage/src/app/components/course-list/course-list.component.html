@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <!-- <h2 class="text-center">Course List</h2> -->
+    <table class="table custom-table">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Description</th>
+          <th>Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courseData">
+          <td>{{ course.courseName }}</td>
+          <td>{{ course.description }}</td>
+          <td>
+            <ul class="student-list">
+              <li *ngFor="let student of course.students" class="student-item">
+                {{ student.studentName }}
+              </li>
+            </ul>
+            <div *ngIf="course.students.length === 0" class="no-students">
+              No students enrolled
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
