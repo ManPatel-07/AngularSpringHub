@@ -28,7 +28,7 @@ export class StudentListComponent
   {
     this.studentService.deleteStudentData(student_id).subscribe(data => {
       console.log(data);
-      
+      this.getStudentList();
     });
     this.getStudentList();
   }

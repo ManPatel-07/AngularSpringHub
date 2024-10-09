@@ -2,6 +2,7 @@ package org.mm.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.mm.entities.CourseEntity;
 import org.mm.entities.StudentEntity;
@@ -53,8 +54,37 @@ public class StudentService
         return studentEntity;
     }
     
-    public void deleteStudentById(Long id)
+    public String deleteStudentById(Long id)
     {
-    	studentRepo.deleteById(id);
+        StudentEntity studentEntity = studentRepo.findById(id).orElseThrow();
+      
+        studentEntity.getCourses()
+            		.forEach(course -> course.getStudents().remove(studentEntity));
+            
+        studentEntity.getCourses().clear();
+
+        studentRepo.deleteById(id);
+        
+        return "Student deleted successfully!";
+        
+    }
+    
+    public String removeStudentFromCourse(Long courseId, Long studentId)
+    {
+    	CourseEntity courseEntity = courseRepo.findById(courseId).orElseThrow();
+    	
+    	StudentEntity studentEntity = studentRepo.findById(studentId).orElseThrow();
+    	
+    	if(courseEntity.getStudents().remove(studentEntity) && 
+    			studentEntity.getCourses().remove(courseEntity))
+    	{
+    		courseRepo.save(courseEntity);
+    		studentRepo.save(studentEntity);
+    		return "Student Remove From Course...";
+    		
+    	}else{
+    		return "Data Not Found ..";
+    	}
+
     }
 }

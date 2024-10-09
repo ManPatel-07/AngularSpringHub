@@ -4,12 +4,14 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { CourseComponent } from './components/course/course.component';
 import { StudentComponent } from './components/student/student.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
+import { CourseUpdateComponent } from './components/course-update/course-update.component';
 
 const routes: Routes = [
   {path: 'courseList', component: CourseListComponent},
   {path: 'course', component: CourseComponent},
   {path: 'student', component: StudentComponent},
-  {path: 'studentList', component: StudentListComponent}
+  {path: 'studentList', component: StudentListComponent},
+  {path: 'editCourse/:id', component: CourseUpdateComponent},
 ];
 
 @NgModule({

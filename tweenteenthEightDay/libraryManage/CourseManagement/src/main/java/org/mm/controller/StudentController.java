@@ -27,11 +27,6 @@ public class StudentController
 	@Autowired
 	private StudentService studentService;
 	
-//	@PostMapping(path = "/save")
-//	public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity)
-//	{
-//		return studentService.saveStudent(studentEntity);
-//	}
 	
 	@PostMapping(path = "/save")
 	public StudentEntity saveStudentData(@RequestBody Map<String, Object> requestData) {
@@ -60,4 +55,15 @@ public class StudentController
 		response.put("message", "Data Deleted ...");
 		return new ResponseEntity<Map<String,String>>(response , HttpStatus.OK);
 	} 
+	
+	@DeleteMapping(path = "/{courseId}/delStudent/{studentId}")
+	public ResponseEntity<Map<String, String>> deleteStudentFromCourse(
+			@PathVariable("courseId") Long courseId,
+			@PathVariable("studentId") Long studentId)
+	{
+		studentService.removeStudentFromCourse(courseId, studentId);
+		Map<String, String> response = new HashMap<>();
+		response.put("message", "Data Delete from Course ...");
+		return new ResponseEntity<Map<String,String>>(response, HttpStatus.OK);
+	}
 }

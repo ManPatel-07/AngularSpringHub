@@ -36,7 +36,7 @@ public class StudentEntity
 	@Column(unique = true)
 	private String email;
 	
-	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<CourseEntity> courses;
 	
 }

@@ -35,7 +35,7 @@ public class CourseEntity
 	
 	private String description;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JsonIgnoreProperties("courses")
 	private List<StudentEntity> students = new ArrayList<>();
 }

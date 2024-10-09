@@ -1,0 +1,86 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Update Course Details</h2>
+    <div class="card">
+      <div class="card-body">
+        <!-- Form for updating course details -->
+        <form #courseForm="ngForm" (ngSubmit)="updateCourse(courseForm.value)">
+          <!-- Course Name Field -->
+          <div class="form-group mb-3">
+            <label for="courseName">Course Name</label>
+            <input 
+              type="text" 
+              id="courseName" 
+              class="form-control" 
+              name="courseName" 
+              [(ngModel)]="course.courseName" 
+              required>
+          </div>
+  
+          <!-- Course Description Field -->
+          <div class="form-group mb-3">
+            <label for="description">Course Description</label>
+            <textarea 
+              id="description" 
+              class="form-control" 
+              rows="3" 
+              name="description" 
+              [(ngModel)]="course.description" 
+              required>
+            </textarea>
+          </div>
+  
+          <!-- Students Table -->
+          <div class="form-group">
+            <label>Students Enrolled</label>
+            <table class="table table-bordered mt-3">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of course.students; let i = index">
+                  <td>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      [(ngModel)]="student.studentName" 
+                      name="studentName-{{i}}" 
+                      required readonly>
+                  </td>
+                  <td>
+                    <input 
+                      type="email" 
+                      class="form-control" 
+                      [(ngModel)]="student.email" 
+                      name="email-{{i}}" 
+                      required readonly>
+                  </td>
+                  <td>
+                    <button 
+                      type="button" 
+                      class="btn btn-danger" 
+                      (click)="removeStudent(student.id)">
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-group text-center">
+            <button 
+              type="submit" 
+              class="btn btn-primary w-100" 
+              [disabled]="!courseForm.valid">
+              Update Course
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

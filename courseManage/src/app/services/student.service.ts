@@ -9,6 +9,7 @@ export class StudentService {
   private postUrl = 'http://localhost:8080/student/save';
   private getUrl = 'http://localhost:8080/student/getAll';
   private deleteUrl = 'http://localhost:8080/student/delete';
+  private deleteFromCourse = 'http://localhost:8080/student';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,10 @@ export class StudentService {
   deleteStudentData(studentId: number)
   {
     return this.http.delete(`${this.deleteUrl}/${studentId}`);
+  }
+
+  studentDeleteFromCourse(course_id: number, student_id:number)
+  {
+    return this.http.delete(`${this.deleteFromCourse}/${course_id}/delStudent/${student_id}`);
   }
 }

@@ -6,6 +6,8 @@
           <th>Course Name</th>
           <th>Description</th>
           <th>Students</th>
+          <th>Delete</th>
+          <th>Update</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +23,12 @@
             <div *ngIf="course.students.length === 0" class="no-students">
               No students enrolled
             </div>
+          </td>
+          <td>
+            <button (click)="deleteCourseById(course.id)">Delete</button>
+          </td>
+          <td>
+            <button (click)="updateCourseById(course.id)">Edit</button>
           </td>
         </tr>
       </tbody>

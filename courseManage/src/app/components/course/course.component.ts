@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course',
@@ -13,7 +14,9 @@ export class CourseComponent {
     "description":''
   };
 
-  constructor(private courseService: CoursesService){}
+  constructor(private courseService: CoursesService,
+    private router: Router
+  ){}
 
   ngOnInit()
   {
@@ -23,6 +26,8 @@ export class CourseComponent {
   {
     this.courseService.createCourse(data).subscribe(data => {
       console.log(data);
+       this.router.navigate(['/courseList']);
     });
+    this.router.navigate(['/courseList']);
   }
 }
