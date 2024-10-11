@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
@@ -16,6 +18,10 @@ public class FileUploadUtil
 	
 	public void uploadFile(MultipartFile file) throws IOException
 	{
-		Files.copy(file.getInputStream(), Paths.get(UPLOAD_URL+File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+		String uuid = UUID.randomUUID().toString();
+		String ext = StringUtils.getFilenameExtension(file.getOriginalFilename());
+		String newFilename = uuid+"."+ext;
+		
+		Files.copy(file.getInputStream(), Paths.get(UPLOAD_URL+File.separator+newFilename), StandardCopyOption.REPLACE_EXISTING);
 	}
 }
