@@ -1,0 +1,71 @@
+/* Form container styling */
+.styled-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input fields styling */
+.styled-form .form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.styled-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* File input styling */
+.styled-form .form-control-file {
+    display: block;
+    padding: 5px 0;
+    font-family: 'Arial', sans-serif;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.styled-form .btn-submit {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.styled-form .btn-submit:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 5px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Form group container for proper spacing */
+.styled-form .form-group {
+    margin-bottom: 15px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .styled-form {
+        padding: 10px;
+    }
+
+    .styled-form .btn-submit {
+        font-size: 1rem;
+    }
+}

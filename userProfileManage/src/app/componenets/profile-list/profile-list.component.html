@@ -1,0 +1,14 @@
+<div class="container mt-4 profiles-container">
+    <h2 class="text-center">Profiles List</h2>
+    <div *ngFor="let profile of profiles" class="card profile-card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ profile.name }}</h5>
+        <p class="card-text">Email: {{ profile.email }}</p>
+        <div class="btn-group">
+          <button class="btn btn-info mr-2" (click)="viewProfileImage(profile)">View Image</button>
+          <button class="btn btn-info mr-2" (click)="deleteProfile(profile)">Delete Profile</button>
+          <button class="btn btn-info mr-2" (click)="editProfile(profile)">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+</div>

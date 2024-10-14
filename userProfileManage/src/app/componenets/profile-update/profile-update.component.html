@@ -1,0 +1,16 @@
+<form #profileUpdateForm="ngForm">
+    <div>
+      <input type="text" name="name" [(ngModel)]="profile.name" placeholder="Your Name" />
+    </div>
+    <div>
+      <input type="email" name="email" [(ngModel)]="profile.email" placeholder="Your Email" />
+    </div>
+    <div class="profile-picture-container" *ngIf="imageUrl">
+      <h2>Profile Picture</h2>
+      <img [src]="imageUrl" [alt]="profile.fileName" width="150" />
+    </div>
+    <div>
+      <button type="submit" (click)="updateProfile(profileUpdateForm.value)">Update Profile</button>
+    </div>
+  </form>
+  
