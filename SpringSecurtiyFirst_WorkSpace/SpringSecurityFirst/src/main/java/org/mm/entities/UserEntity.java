@@ -11,7 +11,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +18,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "user")
 public class UserEntity implements UserDetails
 {
 	@Id
@@ -33,19 +31,24 @@ public class UserEntity implements UserDetails
 	private String email;
 	
 	private String password;
+	
+	private String name;
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() 
+	{
 		return List.of();
 	}
 
 	@Override
-	public String getPassword() {
+	public String getPassword() 
+	{
 		return this.password;
 	}
 
 	@Override
-	public String getUsername() {
+	public String getUsername() 
+	{
 		return this.email;
 	}
 }
