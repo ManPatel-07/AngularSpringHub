@@ -31,6 +31,7 @@ public class JwtService
 		return Jwts.builder()
 				.subject(userEntity.getId().toString())
 				.claim("email", userEntity.getEmail())
+				.claim("name", userEntity.getName())
 				.claim("roles", Set.of("ADMIN", "USER"))
 				.issuedAt(new Date())
 				.expiration(new Date(System.currentTimeMillis() + 1000*60))
