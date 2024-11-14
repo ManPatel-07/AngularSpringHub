@@ -17,4 +17,9 @@ public class BookService
 	{
 		return bookRepository.findAll();
 	}
+
+	public Object fromBookBorrowerInfo(Long id)
+	{	
+		return null;
+	}
 }

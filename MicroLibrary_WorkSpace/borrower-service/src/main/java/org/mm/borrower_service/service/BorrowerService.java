@@ -17,4 +17,14 @@ public class BorrowerService
 	{
 		return borrowerRepository.findAll();
 	}
+
+	public BorrowerEntity getBorrowerById(Long id) 
+	{
+		return borrowerRepository.findById(id).orElseThrow(() -> new RuntimeException());
+	}
+	
+	public List<BorrowerEntity> getBorrowerByBookId(Long id)
+	{
+		
+	}
 }
