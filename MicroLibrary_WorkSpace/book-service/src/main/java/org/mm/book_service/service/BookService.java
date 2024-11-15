@@ -18,8 +18,35 @@ public class BookService
 		return bookRepository.findAll();
 	}
 
-	public Object fromBookBorrowerInfo(Long id)
-	{	
-		return null;
+	public List<BookEntity> getAvailableBooksData() 
+	{
+		return bookRepository.findAvailableBooks();
+	}
+
+	public List<BookEntity> getBorrowedBookData() 
+	{
+		return bookRepository.findBorrowedBooks();
+	}
+
+	public BookEntity createNewBook(BookEntity bookEntity)
+	{
+		return bookRepository.save(bookEntity);
+	}
+
+	public BookEntity bookBorrowProcess(Long id)
+	{
+		BookEntity bookEntity = bookRepository.findById(id).orElseThrow();
+		bookEntity.setIsBorrowed(true);
+		
+		return bookRepository.save(bookEntity);
+	}
+
+	public BookEntity bookSubmitProcess(Long id) 
+	{
+		BookEntity bookEntity = bookRepository.findById(id).orElseThrow();
+		
+		bookEntity.setIsBorrowed(false);
+		
+		return bookRepository.save(bookEntity);
 	}
 }

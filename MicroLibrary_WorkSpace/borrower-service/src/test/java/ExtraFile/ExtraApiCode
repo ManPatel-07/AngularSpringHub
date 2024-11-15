@@ -1,0 +1,70 @@
+	public Map<String, Object> getTotalAreaPercentageDifferenceOptimized2(CropAcerageRequestPayload inputData) {
+
+	    List<String> years = getLastTwoYears(inputData.getYear());
+
+	    List<Object[]> results = null;
+
+	    System.out.println(years);
+	    
+	    if (inputData.getState_code() != null) {
+	        results = cropAcerageDataRepository.findTotalAreaSumByYearsSeasonCropAndState(
+	                years, inputData.getSeason(), inputData.getCrop(),
+	                inputData.getState_code());
+	    } else if (inputData.getState_code() == null && inputData.getDistrict_code() != null) {
+	        results = cropAcerageDataRepository.findTotalAreaSumByYearsSeasonCropAndDistrict(
+	                getLastTwoYears(inputData.getYear()), inputData.getSeason(), inputData.getCrop(),
+	                inputData.getDistrict_code());
+	    } else if (inputData.getState_code() == null && inputData.getDistrict_code() == null
+	            && inputData.getTaluka_code() != null) {
+	        results = cropAcerageDataRepository.findTotalAreaSumByYearsSeasonCropAndTaluk(
+	                getLastTwoYears(inputData.getYear()), inputData.getSeason(), inputData.getCrop(),
+	                inputData.getTaluka_code());
+	    } else if (inputData.getState_code() == null && inputData.getDistrict_code() == null
+	            && inputData.getTaluka_code() == null && inputData.getVillage_code() != null) {
+	        results = cropAcerageDataRepository.findTotalAreaSumByYearsSeasonCropAndDistrict(
+	                getLastTwoYears(inputData.getYear()), inputData.getSeason(), inputData.getCrop(),
+	                inputData.getVillage_code());
+	    } else {
+	        throw new IllegalArgumentException(
+	                "Neither state_code, district_code, taluk_code, nor village_code is provided.");
+	    }
+
+	    Map<String, Double> firstYearData = new HashMap<>();
+	    Map<String, Double> secondYearData = new HashMap<>();
+
+	    for (Object[] row : results) {
+	        String year = (String) row[0];
+	        String cropName = (String) row[2];
+	        Double totalArea = ((Number) row[3]).doubleValue();
+
+	        if (year.equals(years.get(0))) {
+	            firstYearData.put(cropName, totalArea);
+	        } else if (year.equals(years.get(1))) {
+	            secondYearData.put(cropName, totalArea);
+	        }
+	    }
+
+	    List<Map<String, Object>> percentageDifferenceList = new ArrayList<>();
+
+	    for (String cropName : firstYearData.keySet()) {
+	        Double firstYearSum = firstYearData.get(cropName);
+	        Double secondYearSum = secondYearData.getOrDefault(cropName, 0.0);
+
+	        if (firstYearSum != null && firstYearSum != 0) {
+	            double percentageDifference = ((secondYearSum - firstYearSum) / firstYearSum) * 100;
+
+	            if (percentageDifference != 0.0) {
+	                Map<String, Object> cropData = new HashMap<>();
+	                cropData.put(cropName, percentageDifference); 
+	                percentageDifferenceList.add(cropData);
+	            }
+	        }
+	    }
+
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("data", percentageDifferenceList);
+
+	    return response;
+	}
+
+	
