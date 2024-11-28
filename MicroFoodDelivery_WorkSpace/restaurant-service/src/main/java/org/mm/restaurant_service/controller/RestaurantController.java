@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RequestMapping(path = " /restaurants")
+@RequestMapping(path = "/restaurants")
 @RestController
 public class RestaurantController 
 {
