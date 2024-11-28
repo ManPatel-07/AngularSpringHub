@@ -39,6 +39,8 @@ public class RestaurantService
 	{
 		if(restaurantRepo.findById(deleteId) != null)
 		{
+			restaurantRepo.deleteById(deleteId);
+			
 			return "Restaurant Deleted ...";
 		}
 		return "Restaurant Not available ..";

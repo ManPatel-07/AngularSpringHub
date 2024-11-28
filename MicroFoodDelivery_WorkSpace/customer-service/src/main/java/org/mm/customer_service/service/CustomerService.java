@@ -28,4 +28,24 @@ public class CustomerService
 	{
 		return customerRepo.findById(id).orElseThrow();
 	}
+
+	public Customer updateCustomerDetails(Long id, Customer customer)
+	{
+		customer.setId(id);
+		
+		return customerRepo.save(customer);
+	}
+
+	public String deleteById(Long id)
+	{
+		if(customerRepo.findById(id) != null)
+		{
+			customerRepo.deleteById(id);
+			
+			return "Customer Deleted ...";
+		}
+		
+		return "Customer not available !!";
+	}
+	
 }
