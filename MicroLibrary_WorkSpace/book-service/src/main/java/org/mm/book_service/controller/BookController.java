@@ -34,6 +34,12 @@ public class BookController
 		return "Hello from book Service  ...";
 	}
 	
+	@GetMapping(path = "/getall")
+	public ResponseEntity<?> getAllBooks()
+	{
+		return new ResponseEntity<>(bookService.findAllBooks(), HttpStatus.OK);
+	}
+	
 	@PostMapping(path = "/createBook")
 	public ResponseEntity<?> createNewBook(@RequestBody BookEntity bookEntity)
 	{
