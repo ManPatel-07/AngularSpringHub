@@ -23,9 +23,5 @@ public class CompanyService
 	{
 		return companyRepository.findAll();
 	}
-	
-	public Company getByReviewId(Long reviewId)
-	{
-		return companyRepository.findByReviewId(reviewId);
-	}
+
 }
