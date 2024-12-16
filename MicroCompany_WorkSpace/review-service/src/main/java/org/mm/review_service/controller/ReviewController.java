@@ -37,4 +37,4 @@ public class ReviewController
 	{
 		return new ResponseEntity<>(reviewService.getReviewsByCompany(id), HttpStatus.OK);
 	}
-} 
+}

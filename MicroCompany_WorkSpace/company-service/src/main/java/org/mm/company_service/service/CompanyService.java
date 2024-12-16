@@ -23,5 +23,10 @@ public class CompanyService
 	{
 		return companyRepository.findAll();
 	}
+	
+	public Company getByCompanyId(Long id)
+	{
+		return companyRepository.findById(id).orElseThrow();
+	}
 
 }
