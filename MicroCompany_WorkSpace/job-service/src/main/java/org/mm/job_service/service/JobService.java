@@ -18,7 +18,7 @@ public class JobService
 	private final JobRepository jobRepo;
 	
 	private final CompanyFeignClient companyClient;
-	
+	 
 	public Job saveJobDetails(Job job)
 	{
 		return jobRepo.save(job);
