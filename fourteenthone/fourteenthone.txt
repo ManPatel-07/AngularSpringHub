@@ -7,3 +7,5 @@ also create ingredient master api for the sawing the ingredient data and also bi
 create package material for the save the material 
 
 create two more api for the dropdown list to saw the materialunit data and material category data and that bind with the angular front end drop down list
+
+create api for the add supplier details also with the supplier image in Punjab project
