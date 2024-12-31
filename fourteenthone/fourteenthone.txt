@@ -9,3 +9,5 @@ create package material for the save the material
 create two more api for the dropdown list to saw the materialunit data and material category data and that bind with the angular front end drop down list
 
 create api for the add supplier details also with the supplier image in Punjab project
+
+create api for the supplier master view supplier details also with the supplier image in Punjab project
