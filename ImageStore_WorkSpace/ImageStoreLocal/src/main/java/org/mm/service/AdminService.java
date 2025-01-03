@@ -1,6 +1,7 @@
 package org.mm.service;
 
 import java.io.File;
+import java.util.List;
 
 import org.json.JSONObject;
 import org.mm.dao.AdminDao;
@@ -33,7 +34,7 @@ public class AdminService
 		AdminEntity adminEntity = new AdminEntity();
 		
 		if (adminImage != null) {
-			File file = fileUtils.uploadFile(adminImage, "materialImages");
+			File file = fileUtils.uploadFile(adminImage, "adminImage");
 
 			if (file != null) {
 				requestObj.put("materialImages", file.getName());
@@ -49,4 +50,33 @@ public class AdminService
 		return new ResponseEntity<>(adminEntity, HttpStatus.OK);
 	}	
 
+	public ResponseEntity<?> getAdminData() {
+		try {
+			List<AdminEntity> adminDataList = adminRepo.findAll();
+
+			List<AdminDao> adminDao = adminDataList.stream()
+			.map(adminData -> {				
+				
+				AdminDao dao = new AdminDao();
+				
+				dao.setAdminNo(adminData.getAdminNo());
+				dao.setName(adminData.getName());
+				
+                File imageFile = fileUtils.getFile(adminData.getAdminImage(), "adminImage");
+                if (imageFile != null && imageFile.exists()) {
+                    String imageUrl = "http://localhost:8080/image/" + adminData.getAdminImage();
+                    dao.setAdminImage(imageUrl);
+                }
+				
+				return dao;
+			})
+			.toList();
+			
+			return new ResponseEntity<>(adminDao, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

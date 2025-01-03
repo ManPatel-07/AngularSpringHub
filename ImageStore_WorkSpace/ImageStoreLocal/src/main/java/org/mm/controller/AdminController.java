@@ -36,11 +36,17 @@ public class AdminController
 		
 	}
 	
+	@GetMapping(value = "/getAdminData")
+	public ResponseEntity<?> getAdminData()
+	{	
+		return adminService.getAdminData();
+		
+	}
 	
     @GetMapping("/image/{fileName}")
     public ResponseEntity<?> getImage(@PathVariable String fileName) {
         try {
-            File imageFile = fileUtils.getFile(fileName, "materialImages");
+            File imageFile = fileUtils.getFile(fileName, "adminImage");
 
             if (imageFile != null && imageFile.exists()) {
                 Path path = imageFile.toPath();
