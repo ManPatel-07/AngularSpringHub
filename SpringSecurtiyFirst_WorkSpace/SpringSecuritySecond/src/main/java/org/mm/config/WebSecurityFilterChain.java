@@ -2,7 +2,9 @@ package org.mm.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -23,13 +25,30 @@ public class WebSecurityFilterChain
 	{
 		httpSecurity
 				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/secondUser/test").permitAll()
+						.requestMatchers("/secondUser/test", "/auth/**").permitAll()
 						.requestMatchers("/secondUser/testadmin").hasAnyRole("ADMIN")
 						.anyRequest().authenticated())
+				.csrf(custom -> custom.disable())
+				.httpBasic(Customizer.withDefaults())
 				.formLogin(Customizer.withDefaults());
 		
 		return httpSecurity.build();
 	}
+	
+//	@Bean
+//	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
+//	{
+//		return http.authorizeHttpRequests(request -> request
+//							.requestMatchers("/signup", "/login").permitAll()
+//							.anyRequest()
+//							.authenticated())
+////				.formLogin(Customizer.withDefaults())
+//				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//				.csrf(custom -> custom.disable())
+//				.httpBasic(Customizer.withDefaults())
+//				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+//				.build();
+//	}
 	
 	@Bean
 	UserDetailsService myInMemoryUserDetailService()
@@ -53,6 +72,12 @@ public class WebSecurityFilterChain
 	PasswordEncoder passwordEncoder()
 	{
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception
+	{
+		return config.getAuthenticationManager();
 	}
 
 }
