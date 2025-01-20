@@ -38,4 +38,10 @@ public class FeedBackController
 	{
 		return ResponseEntity.ok(feedBackService.getFeedBackById(id));
 	}
+	
+	@GetMapping(path = "/search")
+	public ResponseEntity<?> testSearchData()
+	{
+		return ResponseEntity.ok("test");
+	}
 }
