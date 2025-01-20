@@ -1,5 +1,7 @@
 package org.mm.config;
 
+import org.mm.filters.JwtAuthFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,11 +16,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig 
 {
+	
+	@Autowired
+	private JwtAuthFilter jwtAuthFilter;
+	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
 	{
@@ -26,10 +33,12 @@ public class WebSecurityConfig
 		httpSecurity
 					.authorizeHttpRequests(auth -> auth
 							.requestMatchers("/all", "/auth/**").permitAll()
-							.requestMatchers("/all/test").hasAnyRole("ADMIN")
+//							.requestMatchers("/all/test").hasAnyRole("ADMIN")
 							.anyRequest().authenticated())
 					.csrf(csrfConfig -> csrfConfig.disable())
-					.formLogin(Customizer.withDefaults());
+					.formLogin(Customizer.withDefaults())
+					.httpBasic(Customizer.withDefaults())
+					.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		return httpSecurity.build();
 	}
@@ -59,9 +68,5 @@ public class WebSecurityConfig
 //		return new InMemoryUserDetailsManager(normalUser, adminUser);
 //	}
 	
-	@Bean
-	PasswordEncoder passwordEncoder()
-	{
-		return new BCryptPasswordEncoder();
-	}
+
 }
