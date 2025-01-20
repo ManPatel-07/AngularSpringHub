@@ -1,0 +1,20 @@
+	@GetMapping(path = "/testUserName")
+	public String getUserName(HttpServletRequest request)
+	{
+		return cropMasterService.getUserNameTest(request);
+	}
+
+
+
+	public String getUserNameTest(HttpServletRequest request) 
+	{
+	    String requestTokenHeader = request.getHeader("Authorization");
+
+	    if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
+	        throw new IllegalArgumentException("Invalid or missing Authorization header");
+	    }
+
+	    String token = requestTokenHeader.substring(7);
+
+	    return jwtUtils.extractUsername(token);
+	}
