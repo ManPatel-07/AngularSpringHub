@@ -15,15 +15,6 @@ class SpringSecuritySecondApplicationTests {
 	@Test
 	void contextLoads() 
 	{
-		SecondUserEntity user = new SecondUserEntity(2l, "test@gmail.com", "123321");
-		
-		String token = jwtService.generateToken(user);
-		
-		System.out.println(token);
-		
-		Long id = jwtService.getUserIdFromToken(token);
-		
-		System.out.println(id);
 		
 	}
 

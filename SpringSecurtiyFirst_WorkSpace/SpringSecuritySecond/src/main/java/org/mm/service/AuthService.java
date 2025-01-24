@@ -1,5 +1,6 @@
 package org.mm.service;
 
+import org.mm.dto.LoginResponseDto;
 import org.mm.entity.SecondUserEntity;
 import org.mm.repository.SecondUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,10 @@ public class AuthService
 	@Autowired
 	private JwtService jwtService;
 	
-	public String login(SecondUserEntity secondUserEntity)
+	@Autowired
+	private SecondUserService secondUserService;
+	
+	public LoginResponseDto login(SecondUserEntity secondUserEntity)
 	{
 //		Authentication authentication = authenticationManager.authenticate(
 //				new UsernamePasswordAuthenticationToken(secondUserEntity.getEmail(), secondUserEntity.getPassword()));
@@ -28,9 +32,19 @@ public class AuthService
 		
 		SecondUserEntity user = (SecondUserEntity) authentication.getPrincipal();
 		
-		String token = jwtService.generateToken(user);
+		String accessToken = jwtService.generateAccessToken(user);
+		String refreshToken = jwtService.generateRefreshToken(user);
 		
-		return token;
+		return new LoginResponseDto(user.getId(), accessToken, refreshToken);
 	}
 
+	public LoginResponseDto refreshToken(String refreshToken)
+	{
+		Long userId = jwtService.getUserIdFromToken(refreshToken);
+		SecondUserEntity user = secondUserService.getUserByUserId(userId);
+		
+		String accessToken = jwtService.generateAccessToken(user);
+		
+		return new LoginResponseDto(user.getId(), accessToken, refreshToken);
+	}
 }

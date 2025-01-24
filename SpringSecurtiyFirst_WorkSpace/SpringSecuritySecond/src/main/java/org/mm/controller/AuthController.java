@@ -1,15 +1,23 @@
 package org.mm.controller;
 
+import java.util.Arrays;
+
+import org.mm.dto.LoginResponseDto;
 import org.mm.entity.SecondUserEntity;
 import org.mm.service.AuthService;
 import org.mm.service.SecondUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping(path = "/auth")
@@ -28,8 +36,28 @@ public class AuthController
 	}
 	
 	@PostMapping(path = "/login")
-	public ResponseEntity<?> login(@RequestBody SecondUserEntity secondUserEntity)
+	public ResponseEntity<?> login(@RequestBody SecondUserEntity secondUserEntity, HttpServletResponse response)
 	{
-		return new ResponseEntity<>(authService.login(secondUserEntity), HttpStatus.OK);
+		LoginResponseDto loginResponseDto = authService.login(secondUserEntity);
+		
+		Cookie cookie = new Cookie("refreshToken", loginResponseDto.getRefreshToken());
+		cookie.setHttpOnly(true);
+		response.addCookie(cookie);
+		
+		
+		return new ResponseEntity<>(loginResponseDto, HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "/refresh")
+	public ResponseEntity<?> refresh(HttpServletRequest request)
+	{
+		String refreshToken = Arrays.stream(request.getCookies())
+				.filter(cookie -> "refreshToken".equals(cookie.getName()))
+				.findFirst()
+				.map(Cookie::getValue)
+				.orElseThrow(() -> new AuthenticationServiceException("Refresh token not found inside the cookies"));
+		
+		LoginResponseDto loginResponseDto = authService.refreshToken(refreshToken);
+		return new ResponseEntity<>(loginResponseDto, HttpStatus.OK);
 	}
 }
