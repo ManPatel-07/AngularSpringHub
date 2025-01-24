@@ -6,3 +6,6 @@ On that Day i SetUp all the software i need to Do a work and read Spring Securit
 
 Learn spring Security and create security for the signup and login 
 work on live project in Amnex Punjab project make api and bind with the angular front end.
+
+
+work in live project and create more pagination and search api
