@@ -9,3 +9,7 @@ work on live project in Amnex Punjab project make api and bind with the angular 
 
 
 work in live project and create more pagination and search api
+
+
+
+create a forgot password  api and send the message in contact number for the new password in company project.
