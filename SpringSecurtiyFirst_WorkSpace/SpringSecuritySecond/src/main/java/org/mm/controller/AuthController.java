@@ -1,6 +1,7 @@
 package org.mm.controller;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.mm.dto.LoginResponseDto;
 import org.mm.entity.SecondUserEntity;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,4 +62,18 @@ public class AuthController
 		LoginResponseDto loginResponseDto = authService.refreshToken(refreshToken);
 		return new ResponseEntity<>(loginResponseDto, HttpStatus.OK);
 	}
+	
+	@DeleteMapping("/logout")
+	public ResponseEntity<String> logout(HttpServletRequest request) {
+	    String refreshToken = Arrays.stream(Optional.ofNullable(request.getCookies())
+	                    .orElseThrow(() -> new IllegalArgumentException("No cookies found")))
+	            .filter(cookie -> "refreshToken".equals(cookie.getName()))
+	            .findFirst()
+	            .map(Cookie::getValue)
+	            .orElseThrow(() -> new IllegalArgumentException("Refresh token not found in cookies"));
+
+	    authService.logout(refreshToken);
+	    return ResponseEntity.ok("Logout successful");
+	}
+
 }
