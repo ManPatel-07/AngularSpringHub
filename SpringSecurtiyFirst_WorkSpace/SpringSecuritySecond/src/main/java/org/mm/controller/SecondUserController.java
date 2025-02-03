@@ -1,10 +1,14 @@
 package org.mm.controller;
 
+import org.mm.entity.SecondUserEntity;
 import org.mm.service.SecondUserService;
+import org.mm.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +25,9 @@ public class SecondUserController
 //		return new ResponseEntity<>(secondUserService.getAllUsers(), HttpStatus.OK);
 //	}
 	
+	@Autowired
+	private SessionService sessionService;
+	
 	
 	@GetMapping(path = "/test")
 	public ResponseEntity<?> getTestAPInormal()
@@ -32,5 +39,11 @@ public class SecondUserController
 	public ResponseEntity<?> getTestAPI()
 	{
 		return new ResponseEntity<>("test admin", HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "/getUserFromSession")
+	public ResponseEntity<?> getUserFromSession(@RequestBody SecondUserEntity secondUser)
+	{
+		return new ResponseEntity<>(sessionService.getUserDataFromSession(secondUser), HttpStatus.OK);
 	}
 }

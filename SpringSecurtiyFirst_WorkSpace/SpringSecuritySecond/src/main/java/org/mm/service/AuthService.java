@@ -1,8 +1,12 @@
 package org.mm.service;
 
+import java.util.Optional;
+
 import org.mm.dto.LoginResponseDto;
 import org.mm.entity.SecondUserEntity;
+import org.mm.entity.Session;
 import org.mm.repository.SecondUserRepository;
+import org.mm.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,6 +25,12 @@ public class AuthService
 	@Autowired
 	private SecondUserService secondUserService;
 	
+	@Autowired
+	private SessionService sessionService;
+	
+	@Autowired
+	private SessionRepository sessionRepo;
+	
 	public LoginResponseDto login(SecondUserEntity secondUserEntity)
 	{
 //		Authentication authentication = authenticationManager.authenticate(
@@ -35,16 +45,35 @@ public class AuthService
 		String accessToken = jwtService.generateAccessToken(user);
 		String refreshToken = jwtService.generateRefreshToken(user);
 		
+		sessionService.generateNewSession(user, refreshToken);
+		
 		return new LoginResponseDto(user.getId(), accessToken, refreshToken);
 	}
 
 	public LoginResponseDto refreshToken(String refreshToken)
 	{
 		Long userId = jwtService.getUserIdFromToken(refreshToken);
+		sessionService.validateSession(refreshToken);
 		SecondUserEntity user = secondUserService.getUserByUserId(userId);
 		
 		String accessToken = jwtService.generateAccessToken(user);
 		
-		return new LoginResponseDto(user.getId(), accessToken, refreshToken);
+		return new LoginResponseDto(user.getId(), accessToken, refreshToken);	
 	}
+
+
+    public void logout(String refreshToken) {
+        // Remove "Bearer " prefix if present
+        if (refreshToken.startsWith("Bearer ")) {
+            refreshToken = refreshToken.substring(7);
+        }
+
+        Optional<Session> sessionOpt = sessionRepo.findByRefreshToken(refreshToken);
+
+        if (sessionOpt.isPresent()) {
+            sessionRepo.delete(sessionOpt.get());
+        } else {
+            throw new IllegalArgumentException("Invalid refresh token or session not found");
+        }
+    }
 }
