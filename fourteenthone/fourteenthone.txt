@@ -11,3 +11,5 @@ create two more api for the dropdown list to saw the materialunit data and mater
 create api for the add supplier details also with the supplier image in Punjab project
 
 create api for the supplier master view supplier details also with the supplier image in Punjab project
+
+create a api for the when the crop selected than from that crop i give other drop down for the crop category based on the selected crop
