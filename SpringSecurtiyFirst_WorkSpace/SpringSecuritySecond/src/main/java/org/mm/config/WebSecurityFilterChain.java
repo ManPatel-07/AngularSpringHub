@@ -1,9 +1,11 @@
 package org.mm.config;
 
+import org.mm.entity.enums.Role;
 import org.mm.filters.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -32,7 +34,8 @@ public class WebSecurityFilterChain
 		httpSecurity
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers("/secondUser/test", "/auth/**").permitAll()
-//						.requestMatchers("/secondUser/testadmin").hasAnyRole("ADMIN")
+						.requestMatchers(HttpMethod.POST ,"/secondUser/testadmin").hasAnyRole(Role.ADMIN.name())
+						.requestMatchers(HttpMethod.GET ,"/secondUser/testadmin").hasAnyRole(Role.USER.name())
 						.anyRequest().authenticated())
 				.csrf(custom -> custom.disable())
 				.httpBasic(Customizer.withDefaults())

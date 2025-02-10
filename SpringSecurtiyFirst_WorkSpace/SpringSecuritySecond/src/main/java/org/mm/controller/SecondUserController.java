@@ -38,7 +38,13 @@ public class SecondUserController
 	@GetMapping(path = "/testadmin")
 	public ResponseEntity<?> getTestAPI()
 	{
-		return new ResponseEntity<>("test admin", HttpStatus.OK);
+		return new ResponseEntity<>("test admin Get Api", HttpStatus.OK);
+	}
+	
+	@PostMapping(path = "/testadmin")
+	public ResponseEntity<?> postTestApiAdmin()
+	{
+		return new ResponseEntity<>("test admin Post api", HttpStatus.OK);
 	}
 	
 	@PostMapping(path = "/getUserFromSession")

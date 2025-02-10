@@ -30,7 +30,7 @@ public class JwtService
 		return Jwts.builder()
 				.subject(secondUserEntity.getId().toString())
 				.claim("email", secondUserEntity.getEmail())
-				.claim("roles", Set.of("ADMIN", "USER"))
+				.claim("roles", secondUserEntity.getRoles().toString())
 				.issuedAt(new Date())
 				.expiration(new Date(System.currentTimeMillis() + 1000*60*10))
 				.signWith(getSecretKey())
