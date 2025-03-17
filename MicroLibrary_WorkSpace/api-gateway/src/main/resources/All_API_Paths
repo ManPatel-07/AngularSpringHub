@@ -1,0 +1,12 @@
+--> All API paths :-
+
+Get all books data :- GET  localhost:8010/api/v1/books/getAllBook
+Get All borrower Data :- GET localhost:8010/api/v1/borrower/getAllBorrower
+
+Create Book :- POST  localhost:8010/api/v1/books/createBook
+Create Borrower :- POST  localhost:8010/api/v1/borrower/createUser
+
+Get Borrower Info by BookId :-  GET localhost:8010/api/v1/books/fetchBorrowerInfo/{bookId}
+
+User Borrow the Book :- PUT  localhost:8010/api/v1/borrower/user/{borrowerId}/borrowBook/{bookId}
+User Submit the Book :- PUT  localhost:8010/api/v1/borrower/user/{borrowerId}/submitBook/{bookId}

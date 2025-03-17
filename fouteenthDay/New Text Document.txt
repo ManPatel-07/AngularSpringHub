@@ -2,4 +2,10 @@ on fourteenth day company provide me a Desktop.
 
 On that Day i SetUp all the software i need to Do a work and read Spring Security book.
 
+<<<<<<< HEAD
 Learn some git concepts .....
+=======
+
+
+Learn spring Security and create security for the signup and login
+>>>>>>> ce44bbd476a6836f00ec39c3cdc20bc63bd28284
