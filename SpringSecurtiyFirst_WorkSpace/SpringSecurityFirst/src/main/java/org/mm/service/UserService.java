@@ -41,5 +41,10 @@ public class UserService implements UserDetailsService
 		
 		return userRepo.save(userEntity);
 	}
+	
+	public UserEntity getByUserById(Long id)
+	{
+		return userRepo.findById(id).orElseThrow();
+	}
 
 }

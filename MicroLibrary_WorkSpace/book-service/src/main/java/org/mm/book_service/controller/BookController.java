@@ -8,6 +8,7 @@ import org.mm.book_service.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/books")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class BookController 
 {
 	@Autowired
@@ -30,6 +32,12 @@ public class BookController
 	public String helloFromBook()
 	{
 		return "Hello from book Service  ...";
+	}
+	
+	@GetMapping(path = "/getall")
+	public ResponseEntity<?> getAllBooks()
+	{
+		return new ResponseEntity<>(bookService.findAllBooks(), HttpStatus.OK);
 	}
 	
 	@PostMapping(path = "/createBook")

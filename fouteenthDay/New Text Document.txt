@@ -7,5 +7,17 @@ Learn some git concepts .....
 =======
 
 
+<<<<<<< HEAD
 Learn spring Security and create security for the signup and login
 >>>>>>> ce44bbd476a6836f00ec39c3cdc20bc63bd28284
+=======
+Learn spring Security and create security for the signup and login 
+work on live project in Amnex Punjab project make api and bind with the angular front end.
+
+
+work in live project and create more pagination and search api
+
+
+
+create a forgot password  api and send the message in contact number for the new password in company project.
+>>>>>>> 85110d42185c043533bd61ee6405de4d86c5acb1

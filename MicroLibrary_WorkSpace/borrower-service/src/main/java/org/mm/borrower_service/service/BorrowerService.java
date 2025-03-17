@@ -63,6 +63,7 @@ public class BorrowerService
 		
 		BorrowerEntity borrowerEntity = borrowerRepository.findById(borrowerId).orElseThrow();
 		borrowerEntity.setBorrowedBookId(null);
+		System.out.println(borrowerId);
 		return borrowerRepository.save(borrowerEntity);
 	}
 }

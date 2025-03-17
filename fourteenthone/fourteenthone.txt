@@ -1,1 +1,15 @@
 Today is learning about the Security Filter Chain and Solve one DSA question...
+
+work on live Punjab project on amnex in that i create many api like save ingredient data save image file data and bind with the angular frontend
+
+also create ingredient master api for the sawing the ingredient data and also bind with frontend
+
+create package material for the save the material 
+
+create two more api for the dropdown list to saw the materialunit data and material category data and that bind with the angular front end drop down list
+
+create api for the add supplier details also with the supplier image in Punjab project
+
+create api for the supplier master view supplier details also with the supplier image in Punjab project
+
+create a api for the when the crop selected than from that crop i give other drop down for the crop category based on the selected crop
